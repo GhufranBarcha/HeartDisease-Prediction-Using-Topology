@@ -10,18 +10,7 @@ import plotly.io as pio
 from PIL import Image
 import base64
 
-st.markdown(
-    """
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 # st.set_page_config(page_title=" Topology Heart Disease",page_icon="🚑" , layout="wide") # For other ui uncomment this
 st.set_page_config(page_title=" Topology Heart Disease",page_icon="🚑" , layout="centered")
@@ -38,13 +27,27 @@ back_theme ='''
                 }
                 </style>
             '''
+st.markdown(back_theme  , unsafe_allow_html= True)            
 # "https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-268.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais  img1
 # https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-269.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais img2
 # https://img.freepik.com/free-vector/medical-technology-science-background-vector-blue-with-blank-space_53876-117739.jpg?w=1060&t=st=1698244412~exp=1698245012~hmac=a8f6c2ba2045ed73403265008644f80bdba8133f24d31a7fd8487111eece24de img3
 # https://balchem.com/human-nutrition-health/wp-content/uploads/sites/2/2023/01/Healthy-Heart_1000x600.jpg
 # https://img.freepik.com/premium-photo/overhead-view-photo-practitioner-s-work-space-with-paper-clipboard-mug-espresso-filter-masks-isolated-black-color-backdrop-with-blank-place-text_352249-4086.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais
 # https://img.freepik.com/premium-photo/accessories-medicine-prevention-coronavirus_362520-261.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais
-st.markdown(back_theme  , unsafe_allow_html= True)
+
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 image = Image.open('icons8-heart-64.png')
 
