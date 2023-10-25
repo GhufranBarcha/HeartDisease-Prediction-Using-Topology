@@ -7,6 +7,7 @@ from gtda.homology import VietorisRipsPersistence
 from gtda.plotting import plot_point_cloud
 import plotly.graph_objects as go
 import plotly.io as pio
+from PIL import Image
 import base64
 
 
@@ -14,11 +15,30 @@ import base64
 st.set_page_config(page_title=" Topology Heart Disease",page_icon="🚑" , layout="centered")
 
 pio.templates.default = "plotly_white"
-with open( "style.css" ) as css:
-    st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
-col11 ,col22 = st.columns([1,9])
-with col22:
+
+back_theme ='''
+                <style>
+                [data-testid="stAppViewContainer"]{
+                    background-color: #121212; 
+                    font-family:SometypeMono-MediumItalic;
+                    background-image: url("https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-268.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais");
+                    background-size: cover;
+                }
+                </style>
+            '''
+# "https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-268.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais  img1
+# https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-269.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais img2
+st.markdown(back_theme  , unsafe_allow_html= True)
+
+image = Image.open('icons8-heart-64.png')
+
+
+col11 ,col22 = st.columns([7,3])
+with col11:
      st.title("Cardiac Arrhythmia Detection")
+with col22:
+    st.image(image ,width= 100)     
+    
 
 ## Required for prediction
 def embedder(y_list1):
