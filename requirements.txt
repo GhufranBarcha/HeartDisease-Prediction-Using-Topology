@@ -5,5 +5,5 @@ giotto-tda
 plotly
 pybase64==0.2.0
 openpyxl
-PIL
+Pillow
 
