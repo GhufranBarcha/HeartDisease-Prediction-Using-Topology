@@ -20,6 +20,24 @@ col11 ,col22 = st.columns([1,9])
 with col22:
      st.title("Cardiac Arrhythmia Detection")
 
+## Required for prediction
+def embedder(y_list1):
+        embedding_dimension_periodic = 3
+        embedding_time_delay_periodic = 8
+        stride = 10
+
+        embedder_periodic = SingleTakensEmbedding(
+            parameters_type="fixed",
+            n_jobs=2,
+            time_delay=embedding_time_delay_periodic,
+            dimension=embedding_dimension_periodic,
+            stride=stride,
+        )
+
+        y_periodic_embedded = embedder_periodic.fit_transform(y_list1)
+        msg = f"Shape of embedded time series: {y_periodic_embedded.shape}"
+        return y_periodic_embedded, msg   
+    
 selected = option_menu(
         menu_title=None,
         options= ["Project Info","Code" ,"Patient Prediction","Research Paper"],
@@ -149,30 +167,14 @@ nonperiodic_persistence.fit_transform_plot(y_nonperiodic_embedded)
 ## Prediction code    
 if selected == "Patient Prediction":
     
-    def embedder(y_list1):
-        embedding_dimension_periodic = 3
-        embedding_time_delay_periodic = 8
-        stride = 10
 
-        embedder_periodic = SingleTakensEmbedding(
-            parameters_type="fixed",
-            n_jobs=2,
-            time_delay=embedding_time_delay_periodic,
-            dimension=embedding_dimension_periodic,
-            stride=stride,
-        )
-
-        y_periodic_embedded = embedder_periodic.fit_transform(y_list1)
-        msg = f"Shape of embedded time series: {y_periodic_embedded.shape}"
-        return y_periodic_embedded, msg   
-    
     
     def main():
         st.markdown(" ### Detection using Excel file")
         st.write("Upload a csv or excel file for prediction")
+        
+        uploaded_file = st.file_uploader("Choose an Excel file", type=["xlsx","csv"])
         try:
-            uploaded_file = st.file_uploader("Choose an Excel file", type=["xlsx","csv"])
-
             if uploaded_file is not None:
                 df = pd.read_excel(uploaded_file)
                 filename = uploaded_file.name
@@ -226,8 +228,9 @@ if selected == "Patient Prediction":
                         """)
                 st.plotly_chart(nonperiodic_persistence.plot(n) ,use_container_width=True)
 
-        except:
+        except Exception as e:
             st.warning('Something went Wrong. please upload file Again', icon="⚠️")
+            st.write(e)
             
 
     if __name__ == "__main__":
@@ -241,23 +244,19 @@ if selected == "Research Paper":
         col1, col2 ,col3= st.columns([1,8,1])
         col2.markdown("### Read and Download the Paper here.")
         with col2:
-            def show_pdf(file_path):
-                with open(file_path, "rb") as f:
-                    base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-                    
-                pdf_display = f'<object data="data:application/pdf;base64,{base64_pdf}" type="application/pdf" width="800" height="800"></object>'
-                st.components.v1.html(pdf_display, width=800, height=800)
 
-            show_pdf('Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf')            
+
+
+                      
         
-            # def show_pdf(file_path):
-            #     with open(file_path,"rb") as f:
-            #         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-            #         st.markdown("""
-            #                  <embed src="https://thomasmorestudies.org/wp-content/uploads/2020/09/Richard.pdf" width="800" height="800">
-            #              """, unsafe_allow_html=True)    
-            #     # pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="800" height="800" type="application/pdf"></iframe>'
-            #     # st.markdown(pdf_display, unsafe_allow_html=True)    
-            # show_pdf('Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf')
+            def show_pdf(file_path):
+                with open(file_path,"rb") as f:
+                    base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+                    st.markdown("""
+                             <embed src="https://thomasmorestudies.org/wp-content/uploads/2020/09/Richard.pdf" width="800" height="800">
+                         """, unsafe_allow_html=True)    
+                # pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="800" height="800" type="application/pdf"></iframe>'
+                # st.markdown(pdf_display, unsafe_allow_html=True)    
+            show_pdf('Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf')
             
 
