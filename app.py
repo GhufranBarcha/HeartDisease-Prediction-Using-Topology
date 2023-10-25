@@ -242,10 +242,22 @@ if selected == "Research Paper":
         col2.markdown("### Read and Download the Paper here.")
         with col2:
             def show_pdf(file_path):
-                with open(file_path,"rb") as f:
+                with open(file_path, "rb") as f:
                     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-                pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="800" height="800" type="application/pdf"></iframe>'
-                st.markdown(pdf_display, unsafe_allow_html=True)    
-            show_pdf('Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf')
+                    
+                pdf_display = f'<object data="data:application/pdf;base64,{base64_pdf}" type="application/pdf" width="800" height="800"></object>'
+                st.components.v1.html(pdf_display, width=800, height=800)
 
+            show_pdf('Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf')            
+        
+            # def show_pdf(file_path):
+            #     with open(file_path,"rb") as f:
+            #         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+            #         st.markdown("""
+            #                  <embed src="https://thomasmorestudies.org/wp-content/uploads/2020/09/Richard.pdf" width="800" height="800">
+            #              """, unsafe_allow_html=True)    
+            #     # pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="800" height="800" type="application/pdf"></iframe>'
+            #     # st.markdown(pdf_display, unsafe_allow_html=True)    
+            # show_pdf('Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf')
+            
 
