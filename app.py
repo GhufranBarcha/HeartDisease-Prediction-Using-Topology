@@ -156,8 +156,7 @@ nonperiodic_persistence.fit_transform_plot(y_nonperiodic_embedded)
 
                     """)
         
-        # st.subtitle(" ## If you want to know mathematics behind the code please checkout the Paper Page.")
-    
+        
     
     
     
