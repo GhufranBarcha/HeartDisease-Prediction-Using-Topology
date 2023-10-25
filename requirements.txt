@@ -3,5 +3,5 @@ streamlit-option-menu
 pandas
 giotto-tda
 plotly
-base64
+pybase64==0.2.0
 
