@@ -1,0 +1,6 @@
+streamlit==1.17.2
+streamlit-option-menu==0.2.1
+pandas==1.5.2
+giotto-tda==0.13.0  # Specify the version you want
+plotly==5.9.0
+base64==2.0.8
