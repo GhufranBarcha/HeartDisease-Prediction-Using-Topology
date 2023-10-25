@@ -35,18 +35,6 @@ st.markdown(back_theme  , unsafe_allow_html= True)
 # https://img.freepik.com/premium-photo/overhead-view-photo-practitioner-s-work-space-with-paper-clipboard-mug-espresso-filter-masks-isolated-black-color-backdrop-with-blank-place-text_352249-4086.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais
 # https://img.freepik.com/premium-photo/accessories-medicine-prevention-coronavirus_362520-261.jpg?size=626&ext=jpg&ga=GA1.1.621091213.1692643503&semt=ais
 
-st.markdown(
-    """
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 
 image = Image.open('icons8-heart-64.png')
