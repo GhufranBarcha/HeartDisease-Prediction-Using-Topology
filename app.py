@@ -272,13 +272,22 @@ if selected == "Research Paper":
         # col1, col2 ,col3= st.columns([1,8,1])
         
         # with col2:
-            
+        def check_server_type():
+            if platform.processor() is None:
+                return 'cloud'
+            else:
+                return 'local'
 
-
-        if platform.processor() is None:
+        if check_server_type() == 'cloud':
             st.markdown("### Read and Download the Paper here. [Click Here](https://drive.google.com/file/d/1ZuhZXXeiDmaIqkJ4Ry5nYeFvqeGgpsqf/view?usp=drive_link)")
         else:
-            st.markdown("### Read and Download the Paper here.")
+            st.markdown("### Read and Download the Paper here.")           
+
+
+        # if platform.processor() is None:
+        #     st.markdown("### Read and Download the Paper here. [Click Here](https://drive.google.com/file/d/1ZuhZXXeiDmaIqkJ4Ry5nYeFvqeGgpsqf/view?usp=drive_link)")
+        # else:
+        #     st.markdown("### Read and Download the Paper here.")
                      
         def displayPDF(file):
                 # Opening file from file path
