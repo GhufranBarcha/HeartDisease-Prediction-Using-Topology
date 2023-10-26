@@ -3,7 +3,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
 import base64
-
+import platform
 from gtda.time_series import SingleTakensEmbedding
 from gtda.homology import VietorisRipsPersistence
 from gtda.plotting import plot_point_cloud
@@ -269,11 +269,18 @@ if selected == "Patient Prediction":
     
 if selected == "Research Paper":
     
-        col1, col2 ,col3= st.columns([1,8,1])
-        col2.markdown("### Read and Download the Paper here.")
-        with col2:
+        # col1, col2 ,col3= st.columns([1,8,1])
+        
+        # with col2:
             
-            def displayPDF(file):
+
+
+        if platform.processor() is None:
+            st.markdown("### Read and Download the Paper here. [Click Here](https://drive.google.com/file/d/1ZuhZXXeiDmaIqkJ4Ry5nYeFvqeGgpsqf/view?usp=drive_link)")
+        else:
+            st.markdown("### Read and Download the Paper here.")
+                     
+        def displayPDF(file):
                 # Opening file from file path
                 with open(file, "rb") as f:
                     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
@@ -291,22 +298,10 @@ if selected == "Research Paper":
             
 
             # Display the link to the PDF on Streamlit.
-            displayPDF("Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf")
+        displayPDF("Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf")
                         
 
 
                       
         
-            # def show_pdf(file_path):
-                                        
-                
-                
-                
-            #     with open(file_path,"rb") as f:
-            #         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-                   
-            #     pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="800" height="800" type="application/pdf"></iframe>'
-            #     st.markdown(pdf_display, unsafe_allow_html=True)    
-            # show_pdf('Applications_of_Topology_to_the_Detection_of_Ventricular_Tachycardia_Zhang_Tumuluri.pdf')
-            
 
