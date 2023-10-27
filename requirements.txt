@@ -5,4 +5,4 @@ pandas<=1.5.3
 Pillow<=10.1.0
 plotly<=5.9.0
 openpyxl<=3.0.10
-pybase64==0.2.0
+pybase64<=0.2.0
