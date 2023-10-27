@@ -1,9 +1,8 @@
-streamlit
-streamlit-option-menu
-pandas
-giotto-tda
-plotly
+giotto_tda==0.6.0
+pandas==1.5.3
+Pillow==10.1.0
+plotly==5.9.0
+streamlit_option_menu==0.3.6
+openpyxl==3.0.10
+streamlit==1.27.2
 pybase64==0.2.0
-openpyxl
-Pillow
-
