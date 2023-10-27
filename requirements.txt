@@ -1,5 +1,5 @@
-streamlit_option_menu==0.3.2
-streamlit==1.26.0
+streamlit_option_menu==0.3.6
+streamlit
 giotto_tda==0.6.0
 pandas<=1.5.3
 Pillow<=10.1.0
