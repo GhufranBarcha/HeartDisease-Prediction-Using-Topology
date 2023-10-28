@@ -202,6 +202,7 @@ if selected == "Patient Prediction":
         st.write("Upload a csv or excel file for prediction")
         
         uploaded_file = st.file_uploader("Choose an Excel file", type=["xlsx","csv"])
+        
         try:
             if uploaded_file is not None:
                 df = pd.read_excel(uploaded_file)
@@ -212,7 +213,7 @@ if selected == "Patient Prediction":
                 if ".csv" in filename:
                     fnum = filename.index(".csv")
                     filename = filename[:fnum]    
-                
+                st.info("Note: Circular pattern in the 3D scatter plot indicates a healthy person's file, while a random pattern suggests a patient file.", icon="ℹ️")
 
                 # Plot ECG
                 y_list1 = df["ECG"].tolist()
@@ -230,7 +231,8 @@ if selected == "Patient Prediction":
 
                 # 3D plot 
                 y_periodic_embedded, msg = embedder(y_list1)
-                st.write(f"**{msg}**")    
+                # st.write(f"**{msg}**") 
+                st.write(f" ### 3D plot ")     
                 plot1 = plot_point_cloud(y_periodic_embedded)
                 st.plotly_chart(plot1,use_container_width=True)
 
