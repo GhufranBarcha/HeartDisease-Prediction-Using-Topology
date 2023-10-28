@@ -213,7 +213,10 @@ if selected == "Patient Prediction":
                 if ".csv" in filename:
                     fnum = filename.index(".csv")
                     filename = filename[:fnum]    
-                st.info("Note: Circular pattern in the 3D scatter plot indicates a healthy person's file, while a random pattern suggests a patient file.", icon="ℹ️")
+                if "patient" in df.columns:     
+                    st.info("Patient file", icon="ℹ️")
+                else:
+                    st.info("Healthy person file.", icon="ℹ️")    
 
                 # Plot ECG
                 y_list1 = df["ECG"].tolist()
